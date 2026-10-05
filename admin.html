@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ABUJAR ONLINE TELEKOM - Admin Panel</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f4f6;color:#222}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.box{background:white;width:100%;max-width:380px;padding:30px;border-radius:18px;box-shadow:0 5px 25px #0002;text-align:center}
+.logo{width:90px;height:90px;border-radius:50%;object-fit:cover;margin-bottom:10px}
+h2{margin:8px 0 25px}
+input{width:100%;padding:14px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:10px;background:#1264e8;color:white;font-size:16px;font-weight:bold;margin-top:10px}
+.error{color:red;margin-top:12px;display:none}
+.dashboard{display:none}
+header{background:#1264e8;color:white;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+header h2{margin:0}
+.logout{width:auto;background:#fff;color:#1264e8;margin:0;padding:9px 15px}
+.container{padding:20px;max-width:1100px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.card{background:white;padding:22px;border-radius:15px;box-shadow:0 2px 10px #0001}
+.card h3{margin:0 0 10px;color:#666;font-size:15px}
+.card strong{font-size:28px}
+.menu{margin-top:20px;display:grid;gap:12px}
+.menu button{text-align:left;background:white;color:#222;box-shadow:0 2px 8px #0001}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="loginPage">
+<div class="box">
+<img class="logo" src="logo.png" onerror="this.style.display='none'">
+<h2>ABUJAR ONLINE TELEKOM</h2>
+<p>Admin Panel Login</p>
+
+<input type="text" id="username" placeholder="Admin Username">
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">LOGIN</button>
+<div class="error" id="error">Username অথবা Password ভুল!</div>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+<header>
+<h2>Admin Dashboard</h2>
+<button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+<h2>স্বাগতম Admin 👋</h2>
+
+<div class="cards">
+<div class="card">
+<h3>Total Users</h3>
+<strong>0</strong>
+</div>
+
+<div class="card">
+<h3>Total Balance</h3>
+<strong>৳0</strong>
+</div>
+
+<div class="card">
+<h3>Total Orders</h3>
+<strong>0</strong>
+</div>
+
+<div class="card">
+<h3>API Status</h3>
+<strong style="color:green">OFF</strong>
+</div>
+</div>
+
+<div class="menu">
+<button>👥 User Management</button>
+<button>💰 Balance / Recharge</button>
+<button>📦 Products / Top-up</button>
+<button>🔌 API Settings</button>
+<button>⚙️ Website Settings</button>
+</div>
+</div>
+</div>
+
+<script>
+function login(){
+    const username=document.getElementById("username").value;
+    const password=document.getElementById("password").value;
+
+    // Demo login
+    if(username==="admin" && password==="123456"){
+        document.getElementById("loginPage").style.display="none";
+        document.getElementById("dashboard").style.display="block";
+    }else{
+        document.getElementById("error").style.display="block";
+    }
+}
+
+function logout(){
+    document.getElementById("dashboard").style.display="none";
+    document.getElementById("loginPage").style.display="flex";
+}
+</script>
+
+</body>
+</html>
